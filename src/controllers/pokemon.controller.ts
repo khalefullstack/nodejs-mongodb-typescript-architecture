@@ -3,7 +3,7 @@ import { IPokemonCategory, PokemonCategory } from '../models/pokemon.model';
 
 // Create pokemon category
 export async function createPokemon(
-  req: Request<unknown, IPokemonCategory, IPokemonCategory>,
+  req: Request<unknown, unknown, IPokemonCategory>,
   res: Response<IPokemonCategory | unknown>
 ) {
   try {
@@ -26,7 +26,7 @@ export async function createPokemon(
 
     res.status(200).json(pokemonCat);
   } catch (err) {
-    res.send(err);
+    res.status(401).json({ message: 'Cannot create pokemon' });
   }
 }
 
@@ -47,6 +47,6 @@ export async function getPokemonList(req: Request, res: Response) {
 
     res.status(200).json(cats);
   } catch (err) {
-    res.send(err);
+    res.status(401).json({ message: 'Cannot get pokemon list' });
   }
 }

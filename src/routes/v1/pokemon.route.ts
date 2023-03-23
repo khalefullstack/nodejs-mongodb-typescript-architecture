@@ -3,6 +3,7 @@ import {
   createPokemon,
   getPokemonList,
 } from '../../controllers/pokemon.controller';
+import { isBulbasaur } from '../../middleware/pokemon';
 
 const pokemonApi = express.Router();
 
@@ -33,7 +34,7 @@ const pokemonApi = express.Router();
 pokemonApi.get('/', getPokemonList);
 
 // Create pokemon
-pokemonApi.post('/create', createPokemon);
+pokemonApi.post('/create', isBulbasaur, createPokemon);
 
 // pokemonApi.get('/:id', loadPokemon, function (req: Request, res: Response) {
 //   res.send('Viewing user ' + req.pokemon.name);

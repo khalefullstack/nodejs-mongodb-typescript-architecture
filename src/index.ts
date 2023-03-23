@@ -35,7 +35,7 @@ app.use(function (err: any, req: Request, res: Response, next: NextFunction) {
   // here and next(err) appropriately, or if
   // we possibly recovered from the error, simply next().
   res.status(err.status || 500);
-  res.render('500', { error: err });
+  res.send(err || 'Internal Server Error');
 });
 
 async function connectDb() {
