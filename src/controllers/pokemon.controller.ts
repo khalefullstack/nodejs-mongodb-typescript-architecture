@@ -3,7 +3,7 @@ import { IPokemonCategory, PokemonCategory } from '../models/pokemon.model';
 
 // Create pokemon category
 export async function createPokemon(
-  req: Request<unknown, IPokemonCategory>,
+  req: Request<unknown, IPokemonCategory, IPokemonCategory>,
   res: Response<IPokemonCategory | unknown>
 ) {
   try {
