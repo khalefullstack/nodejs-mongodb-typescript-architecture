@@ -4,6 +4,9 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import { v1 } from './routes';
 import { connect } from 'mongoose';
+import middleware from './middleware';
+import morgan from 'morgan';
+import * as fs from 'fs';
 
 // initialize configuration
 dotenv.config();
@@ -21,6 +24,10 @@ app.use(bodyParser.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Middleware
+app.use(morgan('dev'));
+app.use(middleware({ nest: 'nest' }));
 
 // simple route
 

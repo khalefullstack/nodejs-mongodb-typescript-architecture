@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { IPokemonCategory } from '../models/pokemon.model';
+import { IPokemonCategory } from '../models/pokemonCategory.model';
 
 export function isBulbasaur(
   req: Request<unknown, unknown, IPokemonCategory>,
@@ -14,3 +14,12 @@ export function isBulbasaur(
 
   next();
 }
+
+export const myLogger = function (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  console.log('LOGGED');
+  next();
+};

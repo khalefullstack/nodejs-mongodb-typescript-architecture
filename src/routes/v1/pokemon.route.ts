@@ -1,43 +1,27 @@
-import express, { NextFunction, Request, Response } from 'express';
+import express from 'express';
 import {
-  createPokemon,
   getPokemonList,
+  getPokemon,
+  createPokemon,
+  updatePokemon,
+  deletePokemon,
 } from '../../controllers/pokemon.controller';
-import { isBulbasaur } from '../../middleware/pokemon';
 
 const pokemonApi = express.Router();
 
-// Dummy pokemon
-// const pokemons = [
-//   { id: 0, name: 'tj' },
-//   { id: 1, name: 'ciaran' },
-//   {
-//     id: 2,
-//     name: 'aaron',
-//   },
-// ];
-
-// function loadPokemon(req: Request, res: Response, next: NextFunction) {
-//   // You would fetch your user from the db
-//   const pokemon = pokemons[req.params.id];
-//
-//   if (pokemon) {
-//     req.pokemon = pokemon;
-//
-//     next();
-//   } else {
-//     next(new Error('Failed to load user ' + req.params.id));
-//   }
-// }
-
-// Get pokemon list
+// Get a pokemon details
 pokemonApi.get('/', getPokemonList);
 
-// Create pokemon
-pokemonApi.post('/create', isBulbasaur, createPokemon);
+// Get a pokemon details
+pokemonApi.get('/:id', getPokemon);
 
-// pokemonApi.get('/:id', loadPokemon, function (req: Request, res: Response) {
-//   res.send('Viewing user ' + req.pokemon.name);
-// });
+// Create a pokemon
+pokemonApi.post('/create', createPokemon);
+
+// Update a pokemon
+pokemonApi.put('/:id', updatePokemon);
+
+// Delete a pokemon
+pokemonApi.delete('/:id', deletePokemon);
 
 export default pokemonApi;

@@ -1,26 +1,36 @@
-import { Schema, model, Types } from 'mongoose';
+import { Schema, model } from 'mongoose';
+import { IPokemonCategory } from './pokemonCategory.model';
 
-// 1. Create an interface representing a document in MongoDB.
-export interface IPokemonCategory {
-  id: Types.ObjectId;
+export interface IPokemon {
   name: string;
   image: string;
+  description: string;
 }
 
-// 2. Create a Schema corresponding to the document interface.
-export const PokemonCategorySchema = new Schema<IPokemonCategory>({
-  name: {
-    type: String,
-    required: true,
-  },
-  image: {
-    type: String,
-    required: true,
-  },
-});
+export interface PokemonRequest {
+  id: string;
+}
 
-// 3. Create a Model.
-export const PokemonCategory = model<IPokemonCategory>(
-  'PokemonCategory',
-  PokemonCategorySchema
+export const PokemonSchema = new Schema<IPokemon>(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    image: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+    versionKey: false,
+    collection: 'pokemon',
+  }
 );
+
+export const Pokemon = model<IPokemon>('Pokemon', PokemonSchema);
