@@ -1,10 +1,11 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express from 'express';
+import { login, register } from '../../controllers/user.controller';
 
 const userApi = express.Router();
 
 // Get user list
-userApi.get('/', function (req: Request, res: Response, next: NextFunction) {
-  res.send('response users');
-});
+userApi.post('/auth/register', register);
+
+userApi.post('/auth/login', login);
 
 export default userApi;

@@ -6,7 +6,7 @@ import kataApi from './kata.route';
 
 const v1 = express.Router();
 
-v1.use('/users', userApi);
+v1.use('/user', userApi);
 v1.use('/pokemon-categories', pokemonCategoryApi);
 v1.use('/pokemon', pokemonApi);
 v1.use('/kata', kataApi);

@@ -6,7 +6,6 @@ import { v1 } from './routes';
 import { connect } from 'mongoose';
 import middleware from './middleware';
 import morgan from 'morgan';
-import * as fs from 'fs';
 
 // initialize configuration
 dotenv.config();
