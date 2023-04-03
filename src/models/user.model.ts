@@ -33,4 +33,11 @@ const userSchema = new Schema<IUser>(
   { timestamps: true, versionKey: false, collection: 'user' }
 );
 
+userSchema.method('toJSON', function () {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { __v, _id: id, ...data } = this.toObject();
+
+  return { id, ...data };
+});
+
 export const User = model<IUser>('User', userSchema);
